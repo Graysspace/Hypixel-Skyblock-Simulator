@@ -1,0 +1,13 @@
+html {
+    background-color: orange;
+}
+
+body {
+    text-align: center;
+    color: black;
+}
+
+canvas {
+    border: 1px solid white;
+}
+
