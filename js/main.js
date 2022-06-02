@@ -4,18 +4,24 @@ let ctx = cnv.getContext("2d");
 cnv.width = 800;
 cnv.height = 600;
 
+let player = startplayer();
+
 let purse = 0;
 let bank = 0;
 
 requestAnimationFrame(draw);
 function draw() {
-    drawVillage();
-    drawPlayer();
-
+    drawNether();
+    drawNetherItems();
+    drawPlayer(player);
+    if (player.x < -30) {
+        drawNether();
+        drawNetherItems();
+    }
     requestAnimationFrame(draw);
+
+
 }
-
-
 
 
 
@@ -57,6 +63,21 @@ function drawNether() {
 
 }
 
+function drawNetherItems() {
+    for (i = 1; i< 5; i++) {
+        fill("yellow");
+        rect( i * 30 + i * 100,30,100,50,"fill");
+    }
+    fill("black");
+    text("Kill Blaze", 140,60, "fill");
+    
+}
+let killBlaze = text("Kill Blaze", 140,60, "fill");
+killBlaze.addEventListener("click", moneyBlaze);
+function moneyBlaze() {
+    purse++;
+}
+
 function drawEnd() {
     background("yellowgreen");
     drawSign(50, 300);
@@ -79,6 +100,3 @@ function drawSign(x, y) {
     rect(x, y, 100, 60, "fill");
     rect(x+47, y+60, 6, 40, "fill");
 }
-
-
-        
